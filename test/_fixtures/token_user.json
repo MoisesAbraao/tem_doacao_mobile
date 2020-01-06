@@ -1,0 +1,8 @@
+{
+  "token": "123",
+  "user": {
+    "id": "1",
+    "name": "user",
+    "photo_url": "https://www.domain.com/storage/user.jpg"
+  }
+}
