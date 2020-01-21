@@ -22,6 +22,7 @@ class Failure extends Equatable {
     return Failure(DEFAULT_FAILURE_MESSAGE);
   }
 
+  @override
   List<Object> get props => [message];
 
   @override
