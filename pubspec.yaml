@@ -4,11 +4,12 @@ description: An app used to donate things.
 version: 1.0.0+1
 
 environment:
-  sdk: ">=2.1.0 <3.0.0"
+  sdk: ">=2.6.0 <3.0.0"
 
 dependencies:
   flutter:
     sdk: flutter
+  built_collection: 4.3.2
   cupertino_icons: 0.1.2
   dartz: 0.8.9
   dio: 3.0.7
