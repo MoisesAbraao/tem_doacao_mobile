@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:flutter_test/flutter_test.dart';
 import 'package:tem_doacao_mobile/core/parses.dart';
 import 'package:tem_doacao_mobile/models/category.dart';
@@ -22,7 +23,7 @@ void main() {
     category: category,
     donor: user,
     status: DonationStatus.started,
-    images: [image],
+    images: [image].build(),
     startedAt: DateTime(2020, 1, 1),
     finalizedAt: DateTime(2020, 1, 1),
     canceledAt: DateTime(2020, 1, 1),
@@ -35,7 +36,7 @@ void main() {
     category: categoryDiff,
     donor: userDiff,
     status: DonationStatus.finalized,
-    images: [imageDiff],
+    images: [imageDiff].build(),
     startedAt: DateTime(2020, 2, 1),
     finalizedAt: DateTime(2020, 2, 1),
     canceledAt: DateTime(2020, 2, 1),
@@ -75,7 +76,7 @@ void main() {
         Category category,
         User donor,
         DonationStatus status,
-        List<DonationImage> images,
+        BuiltList<DonationImage> images,
         DateTime startedAt,
         DateTime finalizedAt,
         DateTime canceledAt,

@@ -1,3 +1,4 @@
+import 'package:built_collection/built_collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
 import 'package:tem_doacao_mobile/core/parses.dart';
@@ -16,7 +17,7 @@ class Donation with EquatableMixin {
   final Category category;
   final User donor;
   final DonationStatus status;
-  final List<DonationImage> images;
+  final BuiltList<DonationImage> images;
   final DateTime startedAt;
   final DateTime finalizedAt;
   final DateTime canceledAt;
@@ -46,7 +47,7 @@ class Donation with EquatableMixin {
       status: parseDonationStatusStringToDonationStatus(data['status']),
       images: (data['images'] as List)
         .map((image) => DonationImage.fromJson(image))
-        .toList(),
+        .toBuiltList(),
       startedAt: data['started_at'] == null
         ? null
         : DateTime.parse(data['started_at'] as String),
@@ -89,7 +90,7 @@ class Donation with EquatableMixin {
     Category category,
     User donor,
     DonationStatus status,
-    List<DonationImage> images,
+    BuiltList<DonationImage> images,
     DateTime startedAt,
     DateTime finalizedAt,
     DateTime canceledAt,
