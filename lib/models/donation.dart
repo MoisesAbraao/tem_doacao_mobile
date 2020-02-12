@@ -77,10 +77,18 @@ class Donation with EquatableMixin {
       'images': images
         .map((image) => image.toJson())
         .toList(),
-      'started_at': startedAt.toIso8601String(),
-      'finalized_at': finalizedAt.toIso8601String(),
-      'canceled_at': canceledAt.toIso8601String(),
-      'updated_at': updatedAt.toIso8601String(),
+      'started_at': startedAt == null
+        ? null
+        : startedAt.toIso8601String(),
+      'finalized_at': finalizedAt == null
+        ? null
+        : finalizedAt.toIso8601String(),
+      'canceled_at': canceledAt == null
+        ? null
+        : canceledAt.toIso8601String(),
+      'updated_at': updatedAt == null
+        ? null
+        : updatedAt.toIso8601String(),
     };
 
   Donation copyWith({
