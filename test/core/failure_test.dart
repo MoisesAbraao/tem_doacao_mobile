@@ -29,5 +29,12 @@ void main() {
 
       expect(failure.message, isNot(DEFAULT_FAILURE_MESSAGE));
     });
+
+    test('Unhandled Exception', () {
+      // simulate unhandled exception
+      final failure = Failure.from(FileSystemException());
+
+      expect(failure.message, DEFAULT_FAILURE_MESSAGE);
+    });
   });
 }
