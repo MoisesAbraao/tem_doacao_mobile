@@ -15,8 +15,7 @@ jobs:
         channel: 'stable'
     - run: flutter pub get
     - run: flutter analyze
-    - run: flutter test --coverage
-    - name: send coverage report to coveralls
-      uses: coverallsapp/github-action@master
+    - run: flutter test --coverage ./test
+    - uses: coverallsapp/github-action@master
       with:
         github-token: ${{ secrets.GITHUB_TOKEN }}
