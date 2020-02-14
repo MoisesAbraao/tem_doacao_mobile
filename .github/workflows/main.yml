@@ -11,9 +11,11 @@ jobs:
 
     - name: prepare environment to run tests
       uses: ./.github/actions/flutter_sandbox
-      # install project dependencies
+
+    - name: install project dependencies
       run: flutter pub get
-      # run tests and generate coverage report
+
+    - name: run tests and generate coverage report
       run: flutter test --coverage ./test
 
     - name: send coverage report to coveralls
