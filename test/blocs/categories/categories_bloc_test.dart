@@ -53,15 +53,15 @@ void main() {
       verify(repository.getAll());
     });
 
-    test('should handle when server request with success', () {
+    test('should handle when server request with success', () async {
       setUpSuccess();
 
-      expectLater(
-        bloc.asBroadcastStream(),
+      bloc.add(CategoriesLoad());
+
+      await expectLater(
+        bloc,
         emitsInOrder([CategoriesLoading(), categoriesLoaded])
       );
-
-      bloc.add(CategoriesLoad());
     });
 
     test('should handle when server request with failure', () {
