@@ -1,5 +1,0 @@
-name: flutter_sandbox
-description: create flutter environment
-runs:
-  using: 'docker'
-  image: 'Dockerfile'
