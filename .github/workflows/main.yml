@@ -1,0 +1,22 @@
+name: test and publish coverage report on coveralls
+on: push
+
+jobs:
+  test:
+    runs-on: ubuntu-latest
+    name: test generating coverage report and send it to coveralls
+    steps:
+    - name: load repository actions
+      uses: actions/checkout@v1
+
+    - name: prepare environment to run tests
+      uses: ./.github/actions/flutter_sandbox
+      # install project dependencies
+      run: flutter pub get
+      # run tests and generate coverage report
+      run: flutter test --coverage ./test
+
+    - name: send coverage report to coveralls
+      uses: coverallsapp/github-action@master
+      with:
+        github-token: ${{ secrets.GITHUB_TOKEN }}
