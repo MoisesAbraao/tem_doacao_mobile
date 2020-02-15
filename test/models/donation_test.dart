@@ -160,7 +160,7 @@ void main() {
 
   group('serializers tests', () {
     test('fromJson', () {
-      final Map donationMap = fixtureAsMap('test/_fixtures/donation.json');
+      final Map donationMap = fixtureAsMap('donation.json');
       final Donation donation = Donation.fromJson(donationMap);
 
       expect(donation.id, donationMap['id']);

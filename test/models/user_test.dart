@@ -43,7 +43,7 @@ void main() {
 
   group('serializers tests', () {
     test('fromJson', () {
-      final Map userMap = fixtureAsMap('test/_fixtures/user.json');
+      final Map userMap = fixtureAsMap('user.json');
       final User user = User.fromJson(userMap);
 
       expect(user.id, userMap['id']);

@@ -37,7 +37,7 @@ void main() {
 
   group('serializers tests', () {
     test('fromJson', () {
-      final Map categoryMap = fixtureAsMap('test/_fixtures/category.json');
+      final Map categoryMap = fixtureAsMap('category.json');
       final Category category = Category.fromJson(categoryMap);
 
       expect(category.id, categoryMap['id']);

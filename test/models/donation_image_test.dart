@@ -37,7 +37,7 @@ void main() {
 
   group('serializers tests', () {
     test('fromJson', () {
-      final Map donationImageMap = fixtureAsMap('test/_fixtures/donation_image.json');
+      final Map donationImageMap = fixtureAsMap('donation_image.json');
       final DonationImage _donationImage = DonationImage.fromJson(donationImageMap);
 
       expect(_donationImage.id, donationImageMap['id']);

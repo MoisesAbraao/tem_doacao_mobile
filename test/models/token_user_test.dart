@@ -42,7 +42,7 @@ void main() {
 
   group('serializers tests', () {
     test('fromJson', () {
-      final Map tokenUserMap = fixtureAsMap('test/_fixtures/token_user.json');
+      final Map tokenUserMap = fixtureAsMap('token_user.json');
       final TokenUser _tokenUser = TokenUser.fromJson(tokenUserMap);
 
       expect(_tokenUser.token, tokenUserMap['token']);
