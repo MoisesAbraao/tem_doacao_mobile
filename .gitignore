@@ -39,6 +39,9 @@
 **/android/gradlew.bat
 **/android/local.properties
 **/android/**/GeneratedPluginRegistrant.java
+# because the repository is open to the community
+# and the current certificate has quote limitations
+**/android/app/google-services.json
 
 # iOS/XCode related
 **/ios/**/*.mode1v3
