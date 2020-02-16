@@ -66,6 +66,7 @@ void main() {
 
       final result = await repository.googleSignOut();
 
+      verify(googleSignIn.signOut());
       expect(result, Right(null));
     });
 
