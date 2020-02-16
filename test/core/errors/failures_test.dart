@@ -4,10 +4,10 @@ import 'package:flutter_test/flutter_test.dart';
 import 'package:tem_doacao_mobile/core/errors/failures.dart';
 
 void main() {
-  test('should accept the message in constructor', () {
-    final String message = 'failure message';
-    final Failure failure = Failure(message);
+  final String message = 'failure message';
+  final Failure failure = Failure(message);
 
+  test('should accept the message in constructor', () {
     expect(message, failure.message);
   });
 
@@ -36,5 +36,13 @@ void main() {
 
       expect(failure.message, DEFAULT_FAILURE_MESSAGE);
     });
+  });
+
+  test('string representation', () {
+    final stringRepresentation = failure.toString();
+
+    final startRepresentation = '${failure.runtimeType.toString()} {';
+
+    expect(stringRepresentation.startsWith(startRepresentation), true);
   });
 }
