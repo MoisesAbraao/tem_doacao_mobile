@@ -74,4 +74,12 @@ void main() {
       });
     });
   });
+
+  test('string representation', () {
+    final stringRepresentation = category.toString();
+
+    final startRepresentation = '${category.runtimeType.toString()} {';
+
+    expect(stringRepresentation.startsWith(startRepresentation), true);
+  });
 }

@@ -88,4 +88,12 @@ void main() {
       });
     });
   });
+
+  test('string representation', () {
+    final stringRepresentation = user.toString();
+
+    final startRepresentation = '${user.runtimeType.toString()} {';
+
+    expect(stringRepresentation.startsWith(startRepresentation), true);
+  });
 }

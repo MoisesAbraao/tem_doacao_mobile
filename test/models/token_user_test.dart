@@ -79,4 +79,12 @@ void main() {
       });
     });
   });
+
+  test('string representation', () {
+    final stringRepresentation = tokenUser.toString();
+
+    final startRepresentation = '${tokenUser.runtimeType.toString()} {';
+
+    expect(stringRepresentation.startsWith(startRepresentation), true);
+  });
 }

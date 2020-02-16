@@ -269,4 +269,12 @@ void main() {
       });
     });
   });
+
+  test('string representation', () {
+    final stringRepresentation = donation.toString();
+
+    final startRepresentation = '${donation.runtimeType.toString()} {';
+
+    expect(stringRepresentation.startsWith(startRepresentation), true);
+  });
 }
