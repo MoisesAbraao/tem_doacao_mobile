@@ -1,12 +1,13 @@
 import 'dart:async';
+
 import 'package:built_collection/built_collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart' as dio;
-import 'package:tem_doacao_mobile/core/errors/failures.dart';
-import 'package:tem_doacao_mobile/core/paginated_response.dart';
 
 import '../core/base_repositories.dart';
+import '../core/errors/failures.dart';
 import '../models/donation.dart';
+import '../models/paginated_response.dart';
 
 abstract class DonationsRepository implements BaseRestApiRepository {
   Future<Either<Failure, Donation>> getById(String id);
