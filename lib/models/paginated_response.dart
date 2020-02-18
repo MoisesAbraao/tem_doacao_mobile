@@ -14,7 +14,7 @@ class PaginatedResponse<M extends dynamic> with EquatableMixin {
     @required this.results,
   });
 
-  PaginatedResponse fromJson(Map data, M fromJson(Map<String, dynamic> data)) =>
+  factory PaginatedResponse.fromJson(Map data, M fromJson(Map data)) =>
     PaginatedResponse(
       prev: data['prev'] as String,
       next: data['next'] as String,
