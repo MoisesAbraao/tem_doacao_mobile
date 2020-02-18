@@ -50,6 +50,10 @@ void main() {
       expect(donationImage.id, _donationImage['id']);
       expect(donationImage.imageUrl, _donationImage['image_url']);
     });
+
+    test('should build the same object when toJson and fromJson combined', () {
+      expect(donationImage, DonationImage.fromJson(donationImage.toJson()));
+    });
   });
 
   group('clone tests', () {

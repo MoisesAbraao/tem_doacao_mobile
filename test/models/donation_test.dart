@@ -191,6 +191,10 @@ void main() {
       expect(_donation['canceled_at'], donation.canceledAt.toIso8601String());
       expect(_donation['updated_at'], donation.updatedAt.toIso8601String());
     });
+
+    test('should build the same object when toJson and fromJson combined', () {
+      expect(donation, Donation.fromJson(donation.toJson()));
+    });
   });
 
   group('clone tests', () {

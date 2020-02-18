@@ -50,6 +50,10 @@ void main() {
       expect(category.id, _category['id']);
       expect(category.name, _category['name']);
     });
+
+    test('should build the same object when toJson and fromJson combined', () {
+      expect(category, Category.fromJson(category.toJson()));
+    });
   });
 
   group('clone tests', () {

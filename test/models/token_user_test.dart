@@ -55,6 +55,10 @@ void main() {
       expect(_tokenUser['token'], tokenUser.token);
       expect(_tokenUser['user'], tokenUser.user.toJson());
     });
+
+    test('should build the same object when toJson and fromJson combined', () {
+      expect(tokenUser, TokenUser.fromJson(tokenUser.toJson()));
+    });
   });
 
   group('clone tests', () {

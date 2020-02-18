@@ -58,6 +58,10 @@ void main() {
       expect(user.name, _user['name']);
       expect(user.photoUrl, _user['photo_url']);
     });
+
+    test('should build the same object when toJson and fromJson combined', () {
+      expect(user, User.fromJson(user.toJson()));
+    });
   });
 
   group('clone tests', () {
