@@ -4,9 +4,22 @@ import 'package:equatable/equatable.dart';
 
 @immutable
 class PaginatedResponse<M extends dynamic> with EquatableMixin {
+  static final RegExp cursorRegExp = RegExp('cursor=([^&]*)');
   final String prev;
   final String next;
   final BuiltList<M> results;
+
+  String get prevCursor {
+    if (prev == null || prev == '')
+      return null;
+    return cursorRegExp.firstMatch(prev).group(1);
+  }
+
+  String get nextCursor {
+    if (next == null || next == '')
+      return null;
+    return cursorRegExp.firstMatch(next).group(1);
+  }
 
   PaginatedResponse({
     @required this.prev,

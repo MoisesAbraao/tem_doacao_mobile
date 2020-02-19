@@ -30,6 +30,91 @@ void main() {
     next: '_next',
     results: BuiltList.from([_Response('2')]),
   );
+  final String cursor = r'myCursor!@#$123_';
+
+  group('property cursorPrev', () {
+    test('should return null when prev is string empty', () {
+      final PaginatedResponse<_Response> paginatedResponse = PaginatedResponse<_Response>(
+        prev: '',
+        next: '',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.prevCursor, null);
+    });
+
+    test('should return null when prev is null', () {
+      final PaginatedResponse<_Response> paginatedResponse = PaginatedResponse<_Response>(
+        prev: null,
+        next: '',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.prevCursor, null);
+    });
+
+    test('should return correct cursor when just have cursor in queryParams', () {
+      final PaginatedResponse<_Response> paginatedResponse = PaginatedResponse<_Response>(
+        prev: 'https://domain.com/api/resource?cursor=$cursor',
+        next: '',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.prevCursor, cursor);
+    });
+
+    test('should return correct cursor when have many queryParams', () {
+      final PaginatedResponse<_Response> paginatedResponse = PaginatedResponse<_Response>(
+        prev: 'https://domain.com/api/resource?one=1&cursor=$cursor&foo=bar',
+        next: '',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.prevCursor, cursor);
+    });
+  });
+
+  group('property cursorNext', () {
+    test('should return null when next is string empty', () {
+      final PaginatedResponse<int> paginatedResponse = PaginatedResponse<int>(
+        prev: '',
+        next: '',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.prevCursor, null);
+    });
+
+    test('should return null when next is null', () {
+      final PaginatedResponse<int> paginatedResponse = PaginatedResponse<int>(
+        prev: '',
+        next: null,
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.nextCursor, null);
+    });
+
+    test('should return correct cursor when just has the cursor in queryParams', () {
+      final PaginatedResponse<int> paginatedResponse = PaginatedResponse<int>(
+        prev: '',
+        next: 'https://domain.com/api/resource?cursor=$cursor',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.nextCursor, cursor);
+    });
+
+    test('should return correct cursor when has many queryParams', () {
+      final PaginatedResponse<int> paginatedResponse = PaginatedResponse<int>(
+        prev: '',
+        next: 'https://domain.com/api/resource?one=1&cursor=$cursor&foo=bar',
+        results: BuiltList.from([]),
+      );
+
+      expect(paginatedResponse.nextCursor, cursor);
+    });
+  });
 
   group('equality tests', () {
     test('should be equals when identical objects', () {
