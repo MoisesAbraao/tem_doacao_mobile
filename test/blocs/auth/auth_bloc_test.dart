@@ -13,13 +13,13 @@ import 'package:tem_doacao_mobile/models/user.dart';
 import 'package:tem_doacao_mobile/repositories/auth_repository.dart';
 import 'package:tem_doacao_mobile/repositories/social_auth_repository.dart';
 
-class MockAuthRepository extends Mock implements AuthRepository {}
+class MockAuthRepository extends Mock implements IAuthRepository {}
 
-class MockSocialAuthRepository extends Mock implements SocialAuthRepository {}
+class MockSocialAuthRepository extends Mock implements ISocialAuthRepository {}
 
 void main() {
-  AuthRepository authRepository;
-  SocialAuthRepository socialAuthRepository;
+  IAuthRepository authRepository;
+  ISocialAuthRepository socialAuthRepository;
   AuthBloc bloc;
   final AuthState initialState = Unauthenticated();
   // success

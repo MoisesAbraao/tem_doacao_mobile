@@ -3,17 +3,17 @@ import 'package:google_sign_in/google_sign_in.dart';
 
 import '../core/errors/failures.dart';
 
-abstract class SocialAuthRepository {
+abstract class ISocialAuthRepository {
   /// try to sign in with google,
   /// when the user cancels the operation, the result will be `null`
   Future<Either<Failure, String>> googleSignIn();
   Future<Either<Failure, void>> googleSignOut();
 }
 
-class SocialAuthRepositoryImpl implements SocialAuthRepository {
+class SocialAuthRepository implements ISocialAuthRepository {
   final GoogleSignIn _googleSignIn;
 
-  SocialAuthRepositoryImpl(this._googleSignIn);
+  SocialAuthRepository(this._googleSignIn);
 
   @override
   Future<Either<Failure, String>> googleSignIn() async {

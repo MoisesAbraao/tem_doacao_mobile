@@ -14,7 +14,7 @@ class MockHttpClient extends Mock implements dio.Dio {}
 
 void main() {
   dio.Dio client;
-  AuthRepository repository;
+  IAuthRepository repository;
   final String basePath = 'auth/';
   final TokenUser tokenUser = TokenUser(
     token: '123',
@@ -30,7 +30,7 @@ void main() {
 
   setUp(() {
     client = MockHttpClient();
-    repository = AuthRepositoryImpl(client);
+    repository = AuthRepository(client);
   });
 
   group('signInUp', () {

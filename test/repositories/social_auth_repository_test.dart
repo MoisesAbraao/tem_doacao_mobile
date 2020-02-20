@@ -16,7 +16,7 @@ void main() {
   GoogleSignIn googleSignIn;
   GoogleSignInAccount googleSignInAccount;
   GoogleSignInAuthentication googleSignInAuthentication;
-  SocialAuthRepository repository;
+  ISocialAuthRepository repository;
   final googleAccessToken = 'google access token';
   final exception = PlatformException(code: '10', message: 'Occur an error');
   final failure = Failure.from(exception);
@@ -25,7 +25,7 @@ void main() {
     googleSignIn = MockGoogleSignIn();
     googleSignInAccount = MockGoogleSignInAccount();
     googleSignInAuthentication = MockGoogleSignInAuthentication();
-    repository = SocialAuthRepositoryImpl(googleSignIn);
+    repository = SocialAuthRepository(googleSignIn);
   });
 
   group('googleSignIn', () {

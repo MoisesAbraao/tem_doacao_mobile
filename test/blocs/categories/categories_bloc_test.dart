@@ -11,10 +11,10 @@ import 'package:tem_doacao_mobile/core/errors/failures.dart';
 import 'package:tem_doacao_mobile/models/category.dart';
 import 'package:tem_doacao_mobile/repositories/categories_repository.dart';
 
-class MockCategoriesRepository extends Mock implements CategoriesRepository {}
+class MockCategoriesRepository extends Mock implements ICategoriesRepository {}
 
 void main() {
-  CategoriesRepository repository;
+  ICategoriesRepository repository;
   CategoriesBloc bloc;
   final CategoriesState initialState = CategoriesLoading();
   final Category category = Category(id: '1', name: 'category');

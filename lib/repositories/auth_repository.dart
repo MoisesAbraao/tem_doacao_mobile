@@ -6,14 +6,14 @@ import '../core/base_repositories.dart';
 import '../core/errors/failures.dart';
 import '../models/token_user.dart';
 
-abstract class AuthRepository implements BaseRestApiRepository {
+abstract class IAuthRepository implements BaseRestApiRepository {
   Future<Either<Failure, TokenUser>> signInUp(String googleAccessToken);
 }
 
-class AuthRepositoryImpl implements AuthRepository {
+class AuthRepository implements IAuthRepository {
   final dio.Dio _client;
 
-  AuthRepositoryImpl(this._client);
+  AuthRepository(this._client);
 
   @override
   String get basePath => 'auth/';

@@ -5,7 +5,7 @@ import 'categories_event.dart';
 import 'categories_state.dart';
 
 class CategoriesBloc extends Bloc<CategoriesEvent, CategoriesState> {
-  final CategoriesRepository repository;
+  final ICategoriesRepository repository;
 
   CategoriesBloc(this.repository);
 

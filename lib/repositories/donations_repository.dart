@@ -9,7 +9,7 @@ import '../core/errors/failures.dart';
 import '../models/donation.dart';
 import '../models/paginated_response.dart';
 
-abstract class DonationsRepository implements BaseRestApiRepository {
+abstract class IDonationsRepository implements BaseRestApiRepository {
   Future<Either<Failure, Donation>> getById(String id);
 
   Future<Either<Failure, PaginatedResponse<Donation>>> search(String query);
@@ -19,10 +19,10 @@ abstract class DonationsRepository implements BaseRestApiRepository {
   Future<Either<Failure, PaginatedResponse<Donation>>> getByCursor(String cursor);
 }
 
-class DonationsRepositoryImpl implements DonationsRepository {
+class DonationsRepository implements IDonationsRepository {
   final dio.Dio _client;
 
-  DonationsRepositoryImpl(this._client);
+  DonationsRepository(this._client);
 
   @override
   String get basePath => 'donations/';

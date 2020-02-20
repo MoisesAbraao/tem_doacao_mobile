@@ -7,15 +7,15 @@ import '../core/base_repositories.dart';
 import '../core/errors/failures.dart';
 import '../models/category.dart';
 
-abstract class CategoriesRepository implements BaseRestApiRepository {
+abstract class ICategoriesRepository implements BaseRestApiRepository {
   Future<Either<Failure, BuiltList<Category>>> getAll();
   Future<Either<Failure, Category>> getById(String id);
 }
 
-class CategoriesRepositoryImpl implements CategoriesRepository {
+class CategoriesRepository implements ICategoriesRepository {
   final dio.Dio _client;
 
-  CategoriesRepositoryImpl(this._client);
+  CategoriesRepository(this._client);
 
   @override
   String get basePath => 'categories/';

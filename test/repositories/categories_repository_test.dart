@@ -13,14 +13,14 @@ class MockHttpClient extends Mock implements dio.Dio {}
 
 void main() {
   dio.Dio client;
-  CategoriesRepository repository;
+  ICategoriesRepository repository;
   final Category category = Category(id: '1', name: 'category');
   final String baseUrl = 'categories/';
   final resultException = SocketException('Without internet connection!');
 
   setUp(() {
     client = MockHttpClient();
-    repository = CategoriesRepositoryImpl(client);
+    repository = CategoriesRepository(client);
   });
 
   group('getAll', () {

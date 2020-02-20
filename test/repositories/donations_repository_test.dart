@@ -18,7 +18,7 @@ class MockHttpClient extends Mock implements dio.Dio {}
 
 void main() {
   dio.Dio client;
-  DonationsRepository repository;
+  IDonationsRepository repository;
   final Donation donation = Donation(
     id: '1',
     description: 'donation description',
@@ -37,7 +37,7 @@ void main() {
 
   setUp(() {
     client = MockHttpClient();
-    repository = DonationsRepositoryImpl(client);
+    repository = DonationsRepository(client);
   });
 
   group('getById', () {

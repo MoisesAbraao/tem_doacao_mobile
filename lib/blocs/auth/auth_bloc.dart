@@ -6,8 +6,8 @@ import 'auth_event.dart';
 import 'auth_state.dart';
 
 class AuthBloc extends Bloc<AuthEvent, AuthState> {
-  final AuthRepository authRepository;
-  final SocialAuthRepository socialAuthRepository;
+  final IAuthRepository authRepository;
+  final ISocialAuthRepository socialAuthRepository;
 
   AuthBloc(this.authRepository, this.socialAuthRepository);
 
