@@ -47,13 +47,8 @@ class DonationsRepository implements IDonationsRepository {
     try {
       final dio.Response response = await client.get(path);
 
-      final PaginatedResponse<Donation> paginatedResponse = PaginatedResponse(
-        next: response.data['next'],
-        prev: response.data['prev'],
-        results: (response.data['results'] as List)
-          .map((result) => Donation.fromJson(result))
-          .toBuiltList()
-      );
+      final PaginatedResponse<Donation> paginatedResponse = PaginatedResponse
+        .fromJson(response.data, (data) => Donation.fromJson(data));
 
       return Right(paginatedResponse);
     } catch(e) {
