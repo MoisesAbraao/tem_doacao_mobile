@@ -8,7 +8,5 @@ class Load extends DonationsEvent {}
 class LoadMore extends DonationsEvent {
   final String cursor;
 
-  LoadMore({
-    this.cursor,
-  });
+  LoadMore({@required this.cursor});
 }

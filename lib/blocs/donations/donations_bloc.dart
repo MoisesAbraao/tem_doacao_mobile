@@ -24,13 +24,32 @@ class DonationsBloc extends Bloc<DonationsEvent, DonationsState> {
         (failure) => DonationsLoaded(
           donations: BuiltList.from([]),
           nextCursor: '',
+          loadingMore: false,
           errorMessage: failure.message,
         ),
         (paginatedDonations) => DonationsLoaded(
           donations: paginatedDonations.results,
           nextCursor: paginatedDonations.nextCursor,
+          loadingMore: false,
           errorMessage: '',
         ),
+      );
+    } else if (event is LoadMore) {
+      yield (state as DonationsLoaded).copyWith(loadingMore: true, errorMessage: '');
+
+      final paginatedDonations = await repository.getByCursor(event.cursor);
+
+      yield paginatedDonations.fold(
+        (failure) => (state as DonationsLoaded)
+          .copyWith(loadingMore: false, errorMessage: failure.message),
+        (paginatedDonations) => (state as DonationsLoaded)
+          .copyWith(
+            donations: (state as DonationsLoaded).donations
+              .rebuild((updates) => updates.addAll(paginatedDonations.results)),
+            nextCursor: paginatedDonations.nextCursor,
+            loadingMore: false,
+            errorMessage: '',
+          )
       );
     }
   }

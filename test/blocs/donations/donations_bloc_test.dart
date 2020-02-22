@@ -50,6 +50,7 @@ void main() {
       final loaded = DonationsLoaded(
         donations: paginatedResponse.results,
         nextCursor: paginatedResponse.nextCursor,
+        loadingMore: false,
         errorMessage: '',
       );
       when(repository.getRecents()).thenAnswer((_) async => Right(paginatedResponse));
@@ -64,6 +65,7 @@ void main() {
       final loaded = DonationsLoaded(
         donations: BuiltList.from([]),
         nextCursor: '',
+        loadingMore: false,
         errorMessage: failure.message,
       );
       when(repository.getRecents()).thenAnswer((_) async => Left(failure));
@@ -71,6 +73,68 @@ void main() {
       expect(bloc, emitsInOrder([initialState, loaded]));
 
       bloc.add(Load());
+    });
+  });
+
+  group('when LoadMore', () {
+    final failure = Failure.from(SocketException(''));
+    final loading = DonationsLoading();
+    final loaded = DonationsLoaded(
+      donations: paginatedResponse.results,
+      nextCursor: paginatedResponse.nextCursor,
+      loadingMore: false,
+      errorMessage: '',
+    );
+    final loadedLoadingMore = loaded.copyWith(
+      loadingMore: true,
+      errorMessage: '',
+    );
+    final loadedMore = loaded.copyWith(
+      donations: loaded.donations
+        .rebuild((updates) => updates.addAll(paginatedResponse.results)),
+      nextCursor: paginatedResponse.nextCursor,
+      loadingMore: false,
+      errorMessage: ''
+    );
+    final loadedMoreWithError = loaded.copyWith(
+      loadingMore: false,
+      errorMessage: failure.message,
+    );
+
+    setUpStateToLoadMore() {
+      when(repository.getRecents()).thenAnswer((_) async => Right(paginatedResponse));
+
+      bloc.add(Load());
+    }
+
+    test('should uses the right repository method', () async {
+      setUpStateToLoadMore();
+
+      bloc.add(LoadMore(cursor: 'cursor'));
+
+      await Future.delayed(Duration(seconds: 1));
+
+      verify(repository.getByCursor(any));
+    });
+
+    test('with success', () async {
+      setUpStateToLoadMore();
+
+      when(repository.getByCursor(any)).thenAnswer((_) async => Right(paginatedResponse));
+
+      expectLater(bloc, emitsInOrder([loading, loaded, loadedLoadingMore, loadedMore]));
+
+      bloc.add(LoadMore(cursor: paginatedResponse.nextCursor));
+    });
+
+    test('with fail', () {
+      setUpStateToLoadMore();
+
+      when(repository.getByCursor(any)).thenAnswer((_) async => Left(failure));
+
+      expectLater(bloc, emitsInOrder([loading, loaded, loadedLoadingMore, loadedMoreWithError]));
+
+      bloc.add(LoadMore(cursor: paginatedResponse.nextCursor));
     });
   });
 }

@@ -15,29 +15,34 @@ class DonationsLoading extends DonationsState {}
 class DonationsLoaded extends DonationsState {
   final BuiltList<Donation> donations;
   final String nextCursor;
+  final bool loadingMore;
   final String errorMessage;
 
   DonationsLoaded({
     @required this.donations,
     @required this.nextCursor,
+    @required this.loadingMore,
     @required this.errorMessage,
   });
 
   DonationsLoaded copyWith({
     BuiltList<Donation> donations,
     String nextCursor,
+    bool loadingMore,
     String errorMessage,
   }) =>
     DonationsLoaded(
-      donations: donations,
-      nextCursor: nextCursor,
-      errorMessage: errorMessage,
+      donations: donations ?? this.donations,
+      nextCursor: nextCursor ?? this.nextCursor,
+      loadingMore: loadingMore ?? this.loadingMore,
+      errorMessage: errorMessage ?? this.errorMessage,
     );
 
   @override
   List<Object> get props => [
     donations,
     nextCursor,
+    loadingMore,
     errorMessage,
   ];
 }
