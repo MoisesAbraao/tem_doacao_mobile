@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:built_collection/built_collection.dart';
 import 'package:dartz/dartz.dart';
 import 'package:dio/dio.dart' as dio;
 
