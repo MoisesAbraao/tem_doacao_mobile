@@ -13,7 +13,7 @@ dependencies:
   cupertino_icons: 0.1.2
   dartz: 0.8.9
   dio: 3.0.7
-  equatable: 1.0.1
+  equatable: 1.1.0
   flutter_bloc: 2.1.1
   font_awesome_flutter: 8.5.0
   google_sign_in: 4.1.1
