@@ -44,17 +44,19 @@ class _SliverAppBarSimpleDelegate extends SliverPersistentHeaderDelegate {
 
   @override
   Widget build(BuildContext context, double shrinkOffset, bool overlapsContent) =>
-    Material(
-      color: kPrimaryColor,
-      child: Container(
-        height: minExtent,
-        padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
-        decoration: BoxDecoration(
-          boxShadow: shrinkOffset > 0
-            ? [BoxShadow(color: Colors.black38, blurRadius: 4, offset: Offset(0, 2))]
-            : null,
+    DecoratedBox(
+      decoration: BoxDecoration(
+        boxShadow: shrinkOffset > 0
+          ? [BoxShadow(color: Colors.black38, blurRadius: 4, offset: Offset(0, 2))]
+          : null,
+      ),
+      child: Material(
+        color: kPrimaryColor,
+        child: Container(
+          height: minExtent,
+          padding: EdgeInsets.only(top: MediaQuery.of(context).padding.top),
+          child: child,
         ),
-        child: child,
       ),
     );
 }
