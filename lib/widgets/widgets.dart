@@ -1,6 +1,8 @@
 export 'bottom_bar.dart';
 export 'bottom_bar_item.dart';
+export 'category_chip.dart';
 export 'donation_card.dart';
+export 'recently_searched_tile.dart';
 export 'search_box_button.dart';
 export 'search_box_field.dart';
 export 'sliver_app_bar_simple.dart';
