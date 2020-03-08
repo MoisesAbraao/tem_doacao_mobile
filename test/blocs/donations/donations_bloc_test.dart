@@ -39,7 +39,7 @@ void main() {
 
   group('when Load', () {
     test('should uses the right repository method', () async {
-      bloc.add(Load());
+      bloc.add(DonationsLoad());
 
       await Future.delayed(Duration(seconds: 1));
 
@@ -57,7 +57,7 @@ void main() {
 
       expect(bloc, emitsInOrder([initialState, loaded]));
 
-      bloc.add(Load());
+      bloc.add(DonationsLoad());
     });
 
     test('with fail', () {
@@ -72,7 +72,7 @@ void main() {
 
       expect(bloc, emitsInOrder([initialState, loaded]));
 
-      bloc.add(Load());
+      bloc.add(DonationsLoad());
     });
   });
 
@@ -104,13 +104,13 @@ void main() {
     setUpStateToLoadMore() {
       when(repository.getRecents()).thenAnswer((_) async => Right(paginatedResponse));
 
-      bloc.add(Load());
+      bloc.add(DonationsLoad());
     }
 
     test('should uses the right repository method', () async {
       setUpStateToLoadMore();
 
-      bloc.add(LoadMore(cursor: 'cursor'));
+      bloc.add(DonationsLoadMore(cursor: 'cursor'));
 
       await Future.delayed(Duration(seconds: 1));
 
@@ -124,7 +124,7 @@ void main() {
 
       expectLater(bloc, emitsInOrder([loading, loaded, loadedLoadingMore, loadedMore]));
 
-      bloc.add(LoadMore(cursor: paginatedResponse.nextCursor));
+      bloc.add(DonationsLoadMore(cursor: paginatedResponse.nextCursor));
     });
 
     test('with fail', () {
@@ -134,7 +134,7 @@ void main() {
 
       expectLater(bloc, emitsInOrder([loading, loaded, loadedLoadingMore, loadedMoreWithError]));
 
-      bloc.add(LoadMore(cursor: paginatedResponse.nextCursor));
+      bloc.add(DonationsLoadMore(cursor: paginatedResponse.nextCursor));
     });
   });
 }

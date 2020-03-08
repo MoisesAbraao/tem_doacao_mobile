@@ -15,7 +15,7 @@ class DonationsBloc extends Bloc<DonationsEvent, DonationsState> {
 
   @override
   Stream<DonationsState> mapEventToState(DonationsEvent event) async* {
-    if (event is Load) {
+    if (event is DonationsLoad) {
       yield DonationsLoading();
 
       final paginatedDonations = await repository.getRecents();
@@ -34,7 +34,7 @@ class DonationsBloc extends Bloc<DonationsEvent, DonationsState> {
           errorMessage: '',
         ),
       );
-    } else if (event is LoadMore) {
+    } else if (event is DonationsLoadMore) {
       yield (state as DonationsLoaded).copyWith(loadingMore: true, errorMessage: '');
 
       final paginatedDonations = await repository.getByCursor(event.cursor);

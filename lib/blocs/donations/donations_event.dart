@@ -3,10 +3,10 @@ import 'package:meta/meta.dart';
 @immutable
 abstract class DonationsEvent {}
 
-class Load extends DonationsEvent {}
+class DonationsLoad extends DonationsEvent {}
 
-class LoadMore extends DonationsEvent {
+class DonationsLoadMore extends DonationsEvent {
   final String cursor;
 
-  LoadMore({@required this.cursor});
+  DonationsLoadMore({@required this.cursor});
 }
