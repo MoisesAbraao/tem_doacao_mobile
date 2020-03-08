@@ -1,6 +1,7 @@
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
-import 'package:tem_doacao_mobile/models/token_user.dart';
+
+import '../../models/token_user.dart';
 
 @immutable
 abstract class AuthState with EquatableMixin {

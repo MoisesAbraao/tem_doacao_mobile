@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:built_collection/built_collection.dart';
-import 'package:tem_doacao_mobile/repositories/donations_repository.dart';
 
+import '../../repositories/donations_repository.dart';
 import 'donations_event.dart';
 import 'donations_state.dart';
 

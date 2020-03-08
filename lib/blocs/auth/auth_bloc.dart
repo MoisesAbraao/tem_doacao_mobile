@@ -1,7 +1,7 @@
 import 'package:bloc/bloc.dart';
-import 'package:tem_doacao_mobile/repositories/social_auth_repository.dart';
 
 import '../../repositories/auth_repository.dart';
+import '../../repositories/social_auth_repository.dart';
 import 'auth_event.dart';
 import 'auth_state.dart';
 

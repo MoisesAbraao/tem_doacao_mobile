@@ -1,12 +1,12 @@
 import 'package:built_collection/built_collection.dart';
 import 'package:equatable/equatable.dart';
 import 'package:flutter/material.dart';
-import 'package:tem_doacao_mobile/core/parses.dart';
-import 'package:tem_doacao_mobile/models/models.dart';
 
+import '../core/parses.dart';
 import 'category.dart';
 import 'donation_image.dart';
 import 'donation_status.dart';
+import 'models.dart';
 import 'user.dart';
 
 @immutable

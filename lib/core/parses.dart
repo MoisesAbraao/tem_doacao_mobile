@@ -1,4 +1,4 @@
-import 'package:tem_doacao_mobile/models/donation_status.dart';
+import '../models/donation_status.dart';
 
 DonationStatus parseDonationStatusStringToDonationStatus(String status) {
   switch(status) {
