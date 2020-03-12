@@ -11,6 +11,7 @@ class MockAssetBundle extends Mock implements AssetBundle {}
 void main() {
   AssetBundle assetBundle;
   AppConfig appConfig;
+  final String appConfigFilenameFixture = 'app_config.json';
 
   setUp(() {
     WidgetsFlutterBinding.ensureInitialized();
@@ -20,7 +21,7 @@ void main() {
 
   test('should load configurations from right file', () async {
     when(assetBundle.loadString(APP_CONFIG_FILENAME))
-      .thenAnswer((_) async => fixture(APP_CONFIG_FILENAME));
+        .thenAnswer((_) async => fixture(appConfigFilenameFixture));
 
     await appConfig.initialize();
 
@@ -30,11 +31,11 @@ void main() {
   group('should bind right key from json file loaded', () {
     test('for apiBaseUrl', () async {
       when(assetBundle.loadString(APP_CONFIG_FILENAME))
-        .thenAnswer((_) async => fixture(APP_CONFIG_FILENAME));
+        .thenAnswer((_) async => fixture(appConfigFilenameFixture));
 
       await appConfig.initialize();
 
-      final tAppConfigMap = fixtureAsMap(APP_CONFIG_FILENAME);
+      final tAppConfigMap = fixtureAsMap(appConfigFilenameFixture);
 
       expect(appConfig.apiBaseUrl, tAppConfigMap['api_base_url']);
     });

@@ -1,7 +1,7 @@
 import 'dart:convert' show jsonDecode;
 import 'package:flutter/services.dart' show AssetBundle;
 
-const String APP_CONFIG_FILENAME = 'app_config.json';
+const String APP_CONFIG_FILENAME = 'config/app_config.json';
 
 class AppConfig {
   Map<String, dynamic> _config;
