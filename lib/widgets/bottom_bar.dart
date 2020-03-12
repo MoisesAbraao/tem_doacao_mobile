@@ -10,7 +10,7 @@ class BottomBar extends StatelessWidget {
   @override
   Widget build(BuildContext context) =>
     Container(
-      height: 64,
+      height: 56,
       decoration: BoxDecoration(
         color: kPrimaryColor,
         boxShadow: [BoxShadow(color: Colors.black38, blurRadius: 4, offset: Offset(0, -2))]
