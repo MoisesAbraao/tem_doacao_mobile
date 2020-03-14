@@ -42,14 +42,14 @@ class DonationsBloc extends Bloc<DonationsEvent, DonationsState> {
       yield paginatedDonations.fold(
         (failure) => (state as DonationsLoaded)
           .copyWith(loadingMore: false, errorMessage: failure.message),
-        (paginatedDonations) => (state as DonationsLoaded)
-          .copyWith(
+        (paginatedDonations) =>
+          DonationsLoaded(
             donations: (state as DonationsLoaded).donations
               .rebuild((updates) => updates.addAll(paginatedDonations.results)),
             nextCursor: paginatedDonations.nextCursor,
             loadingMore: false,
             errorMessage: '',
-          )
+          ),
       );
     }
   }
