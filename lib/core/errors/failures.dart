@@ -1,5 +1,6 @@
 import 'dart:io';
 
+import 'package:dio/dio.dart';
 import 'package:equatable/equatable.dart';
 import 'package:meta/meta.dart';
 
@@ -14,7 +15,7 @@ class Failure extends Equatable {
   factory Failure.from(dynamic f) {
     if (f is HttpException) {
       return Failure('Could not reach the server!');
-    } else if (f is SocketException) {
+    } else if (f is SocketException || f is DioError && f.error is SocketException) {
       return Failure('Verify your internet connection!');
     } else if (f is FormatException) {
       return Failure('Could not do that operation!');
